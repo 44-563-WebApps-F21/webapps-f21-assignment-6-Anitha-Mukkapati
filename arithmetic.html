@@ -21,7 +21,18 @@
 
 
 <p id="result">This text will be replaced </p>
+<form>
+    <input type="radio" id="1_plus" name="operation" value="plus" onclick="processRadio()">
+    <label for="1_plus">+</label></br>
+    <input type="radio" id="2_minus" name="operation" value="minus" onclick="processRadio()">
+    <label for="2_minus">-</label></br>
+    <input type="radio" id="3_times" name="operation" value="times" onclick="processRadio()">
+    <label for="3_times">*</label></br>
+    <input type="radio" id="4_divide" name="operation" value="divide" onclick="processRadio()">
+    <label for="4_divide">/</label></br>
 
+</form>
+<p id="resultRadio">This text will be replaced </p>
 <script> 
 function powers() {
             console.log("Getting form values")
@@ -37,19 +48,24 @@ function powers() {
             out.innerHTML = result
         }
 
-function resolveForm (){
-    console.log("Getting form values")
-    age = document.getElementById("form1_age").value
-    nick = document.getElementById("form1_nick").value
-    confirmed = confirm("Are these the values? "+age+" and "+nick)
-    
-    out = document.getElementById("result")
-    if(confirmed){
-        out.innerHTML = "Values were confirmed"
-    } else {
-        out.innerHTML = "Values were not confirmed"
-    }
-}
+        function processRadio() {
+            base = document.getElementById("form_base").value
+            exponent = document.getElementById("form_exponent").value
+            plus = document.getElementById("1_plus").checked
+            minus = document.getElementById("2_minus").checked
+            times = document.getElementById("3_times").checked
+            divide = document.getElementById("4_divide").checked
+            result = document.getElementById("resultRadio")
+            if (plus)
+                result.innerHTML = +base + +exponent
+            else if (minus)
+                result.innerHTML = base - exponent
+            else if (times)
+                result.innerHTML = base * exponent
+            else
+                result.innerHTML = base / exponent
+
+        }
 </script>
 
 </body>

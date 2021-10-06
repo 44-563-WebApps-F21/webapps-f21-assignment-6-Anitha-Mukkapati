@@ -3,8 +3,17 @@
 
 <head>
     <title>Pass phrase by Anitha Mukkapati</title>
+    <style>
+        form {
+            background-color: thistle;
+            border: solid tomato;
+        }
+        h1 {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
 </head>
-<h1>Pass phrase by Anitha Mukkapati </h1> 
+<h1>Pass phrase by Anitha Mukkapati </h1>
 <script>
     var correct = 0, wrong = 0;
     function processPhrase() {
@@ -20,33 +29,37 @@
             wrong = wrong + 1;
             document.getElementById("result").innerHTML = "Wrong count " + wrong;
             alert("access denied");
+            if (wrong > 3) {
+                alert("account locked");
+            }
         }
     }
     let usingImage = 1
-        function newImage(img) {
-            switch (usingImage) {
-                case 1:
-                    document.getElementById("animals").src = "Monkey.jpg"
-                    usingImage++;
-                    break;
-                case 2:
-                    document.getElementById("animals").src = "Kangaroo.jpg"
-                    usingImage++;
-                    break;
-                default:
-                    usingImage = 1;
-                    document.getElementById("animals").src = "Penguin.jpg"
-                    break;
-            }
+    function newImage(img) {
+        switch (usingImage) {
+            case 1:
+                document.getElementById("animals").src = "Monkey.jpg"
+                usingImage++;
+                break;
+            case 2:
+                document.getElementById("animals").src = "Kangaroo.jpg"
+                usingImage++;
+                break;
+            default:
+                usingImage = 1;
+                document.getElementById("animals").src = "Penguin.jpg"
+                break;
         }
+    }
 </script>
 </head>
 <div class="container">
     <img src="Penguin.jpg" id="animals" alt="Penguin" style="height: 200px;" width="200px" onclick="newImage(this)" />
 </div>
+
 <body>
 
-    
+
     <form>
         <label for="secretphrase">Enter the secret phrase </label>
         <input type="password" id="secretphrase" name="secretphrase" value="Let me in"> <br>

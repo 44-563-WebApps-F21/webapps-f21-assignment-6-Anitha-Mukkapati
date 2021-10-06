@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
- <head>
-     <title>car</title>
- </head>
+
+<head>
+    <title>car</title>
+</head>
+
 <body>
 
-<h1>Anitha Mukkapati orders a car</h1>
+    <h1>Anitha Mukkapati orders a car</h1>
 
-<form>
-    <input type="checkbox" id="1electric" name="property1" class="form-check-input" value="Electric">
+    <form>
+        <input type="checkbox" id="1electric" name="property1" class="form-check-input" value="Electric">
         <label for="1_electric" class="form-check-label">Electric</label><br>
 
         <input type="checkbox" id="2ac" name="property2" class="form-check-input" value="Ac">
@@ -18,13 +20,24 @@
         <label for="3_gps" class="form-check-label">gps</label><br>
 
         <input type="button" onclick="orderCar()" value="Order a Car">
-</form>
+    </form>
 
 
-<p id="result">This text will be replaced </p>
+    <p id="result">This text will be replaced </p>
 
-<script> 
-let my_car = {}
+    <label for="form_prop">Enter a property</label>
+    <input type="text" id="form_prop" name="form_prop" value="choose color"><br>
+    <br>
+    <label for="form_value">Enter a value</label>
+    <input type="text" id="form_value" name="form_value"> <br>
+    <br>
+    <input type="button" onclick="updateCar()" value="Update the car">
+
+    </form>
+
+    <p id="rslt">properties text</p>
+    <script>
+        let my_car = {}
         function orderCar() {
             my_car = {}
             first = document.getElementById("1electric").checked
@@ -38,20 +51,17 @@ let my_car = {}
             out.innerHTML = my_car
             my_car = JSON.parse(my_car)
         }
-function resolveForm (){
-    console.log("Getting form values")
-    age = document.getElementById("form1_age").value
-    nick = document.getElementById("form1_nick").value
-    confirmed = confirm("Are these the values? "+age+" and "+nick)
-    
-    out = document.getElementById("result")
-    if(confirmed){
-        out.innerHTML = "Values were confirmed"
-    } else {
-        out.innerHTML = "Values were not confirmed"
-    }
-}
-</script>
+        function updateCar() {
+            prop = document.getElementById("form_prop").value
+            val = document.getElementById("form_value").value
+            out = document.getElementById("result")
+            my_car[prop] = val
+            my_car = JSON.stringify(my_car)
+            out.innerHTML = my_car
+           my_car = JSON.parse(my_car)
+        }
+    </script>
 
 </body>
-</html> 
+
+</html>

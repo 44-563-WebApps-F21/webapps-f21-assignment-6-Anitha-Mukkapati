@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+ <head>
+     <title>car</title>
+ </head>
+<body>
+
+<h1>Anitha Mukkapati orders a car</h1>
+
+<form>
+    <input type="checkbox" id="1electric" name="property1" class="form-check-input" value="Electric">
+        <label for="1_electric" class="form-check-label">Electric</label><br>
+
+        <input type="checkbox" id="2ac" name="property2" class="form-check-input" value="Ac">
+        <label for="2_ac" class="form-check-label">ac</label><br>
+
+        <input type="checkbox" id="3gps" name="property3" class="form-check-input" value="Gps">
+        <label for="3_gps" class="form-check-label">gps</label><br>
+
+        <input type="button" onclick="orderCar()" value="Order a Car">
+</form>
+
+
+<p id="result">This text will be replaced </p>
+
+<script> 
+let my_car = {}
+        function orderCar() {
+            my_car = {}
+            first = document.getElementById("1electric").checked
+            second = document.getElementById("2ac").checked
+            third = document.getElementById("3gps").checked
+            out = document.getElementById("result")
+            first ? my_car["electric"] = true : my_car["electric"] = false
+            second ? my_car["ac"] = true : my_car["ac"] = false
+            third ? my_car["gps"] = true : my_car["gps"] = false
+            my_car = JSON.stringify(my_car)
+            out.innerHTML = my_car
+            my_car = JSON.parse(my_car)
+        }
+function resolveForm (){
+    console.log("Getting form values")
+    age = document.getElementById("form1_age").value
+    nick = document.getElementById("form1_nick").value
+    confirmed = confirm("Are these the values? "+age+" and "+nick)
+    
+    out = document.getElementById("result")
+    if(confirmed){
+        out.innerHTML = "Values were confirmed"
+    } else {
+        out.innerHTML = "Values were not confirmed"
+    }
+}
+</script>
+
+</body>
+</html> 
